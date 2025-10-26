@@ -1,0 +1,60 @@
+{
+  "project": {
+    "name": "autonomous-task-manager",
+    "type": "fullstack",
+    "tech_stack": {
+      "frontend": ["react", "typescript", "vite", "tailwind", "pwa"],
+      "backend": ["fastapi", "python", "postgresql", "sqlalchemy"],
+      "deployment": ["vercel", "railway", "docker"]
+    }
+  },
+  "strategic_agent": {
+    "model": "claude-sonnet-4-20250514",
+    "max_tokens": 8000,
+    "temperature": 0.7,
+    "auto_merge_simple": true,
+    "complexity_threshold": "medium",
+    "patterns": {
+      "frontend_component": "functional_typescript",
+      "backend_endpoint": "async_fastapi",
+      "testing": "jest_pytest"
+    }
+  },
+  "execution_agent": {
+    "model": "claude-sonnet-4-20250514",
+    "max_tokens": 8000,
+    "temperature": 0.3,
+    "test_coverage_threshold": 80,
+    "auto_merge_on_pass": true,
+    "quality_gates": {
+      "typescript": true,
+      "eslint": true,
+      "ruff": true,
+      "mypy": true,
+      "tests": true,
+      "build": true
+    }
+  },
+  "deployment": {
+    "frontend": {
+      "platform": "vercel",
+      "auto_deploy": true,
+      "preview_deployments": true
+    },
+    "backend": {
+      "platform": "railway",
+      "auto_deploy": true,
+      "health_check": "/health"
+    },
+    "database": {
+      "migrations_required": true,
+      "backup_before_deploy": true
+    }
+  },
+  "quality": {
+    "coverage_threshold": 80,
+    "lighthouse_score": 90,
+    "bundle_size_limit": "500KB",
+    "api_response_time": "200ms"
+  }
+}
